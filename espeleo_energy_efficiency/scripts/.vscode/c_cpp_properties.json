@@ -1,0 +1,25 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/david/imu_ws/devel/include/**",
+        "/home/david/catkin_ws/devel/include/**",
+        "/opt/ros/kinetic/include/**",
+        "/home/david/imu_ws/src/ekf_filter/include/**",
+        "/home/david/catkin_ws/src/espeleo_localization/include/**",
+        "/home/david/imu_ws/src/espeleo_pose_ekf/include/**",
+        "/home/david/imu_ws/src/hector_localization/hector_pose_estimation/include/**",
+        "/home/david/imu_ws/src/hector_localization/hector_pose_estimation_core/include/**",
+        "/home/david/imu_ws/src/imu_tools/imu_complementary_filter/include/**",
+        "/home/david/imu_ws/src/imu_tools/imu_filter_madgwick/include/**",
+        "/home/david/catkin_ws/src/robot_localization/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ]
+}

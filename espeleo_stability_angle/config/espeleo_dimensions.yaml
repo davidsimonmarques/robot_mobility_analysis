@@ -1,0 +1,99 @@
+#Diagrama da posicao dos pontos de contato do espeleo_robo:
+#   (p6) ____ (p1)             
+#     |     X   |         
+#  (p5)  y__|   (p2)       
+#     |         |            
+#   (p4) ____ (p3)             
+#Obs: utilizar distâncias em metros
+
+#Diagrama da posicao dos pontos de contato do pioneer:
+#   (p4) ____ (p1)             
+#     |     X   |         
+#     |  y__|   |       
+#     |         |            
+#   (p3) ____ (p2)             
+#Obs: utilizar distâncias em metros
+
+dynamics: True #modo dinamico on/off
+plot: True #plotar o poligono de sustentacao (matplotlib)
+
+limit : 15 #angulo maximo antes do alerta vermelho ser ativado   
+limit_up : 25 #angulo maximo antes do amarelo ser ativado  
+
+
+#-----------------------------------------------------------------
+#Para espeleo_robo:                                              |
+#-----------------------------------------------------------------
+# model : "ESPELEO"
+# m : 6 #numero de pontos de contato (4 ou 6)                           
+# dx : 0.212 #distancia entre p1 e p2 = distancia entre p2 e p3 ...
+# dy : 0.33 #distancia entre p6 e p1 = distancia entre p4 e p3        
+# dy_m : 0.425 #distancia entre p5 e p2 - rodas mais afastadas     
+# dz : 0.135 #altura do centro de massa                            
+# fg : [0, 0, -258.916] #forca peso atuante no centro de massa   
+# #matriz de inercia para modelo dinamico (dado do solidworks):                                               
+# I_m : [[ 0.17043061, -0.00068599, -0.00071081], [-0.00068599,  0.47382295,  0.00247082], [-0.00071081,  0.00247082,  0.56898193]]                       
+# mass : 26.42 #massa                                                          
+#-----------------------------------------------------------------
+
+#-----------------------------------------------------------------
+#Para espeleo_robo 4 rodas de raio menor:                        |
+#-----------------------------------------------------------------
+# model : "ESPELEO4R"
+# m : 4 #numero de pontos de contato                           
+# dx : 0.424 #distancia entre p1 e p2 = distancia entre p2 e p3 ...
+# dy : 0.33 #distancia entre p6 e p1 = distancia entre p4 e p3        
+# dy_m : 0 #nao utilizado nesse caso  
+# dz : 0.135 #altura do centro de massa                            
+# fg : [0, 0, -258.916] #forca peso atuante no centro de massa   
+# #matriz de inercia para modelo dinamico (dado do solidworks):                                               
+# I_m : [[0.73986250162125, -6.9621710281353e-05, 0.0011529049370438], [-6.9621710281353e-05, 1.1992396116257, -0.00033347599674016], [0.0011529049370438, -0.00033347599674016, 0.81591939926147]]
+# mass : 26.42 #massa                                                     
+#-----------------------------------------------------------------
+
+
+#-----------------------------------------------------------------
+#Para espeleo_robo 4 rodas de raio 195mm:                        |
+#-----------------------------------------------------------------
+# model : "ESPELEO4x390"
+# m : 4 #numero de pontos de contato                           
+# dx : 0.424 #distancia entre p1 e p2 = distancia entre p2 e p3 ...
+# dy : 0.33 #distancia entre p6 e p1 = distancia entre p4 e p3        
+# dy_m : 0 #nao utilizado nesse caso  
+# dz : 0.1858 #altura do centro de massa                            
+# fg : [0, 0, -258.916] #forca peso atuante no centro de massa   
+# #matriz de inercia para modelo dinamico (dado do solidworks):                                               
+# I_m : [[ 0.17043061, -0.00068599, -0.00071081], [-0.00068599,  0.47382295,  0.00247082], [-0.00071081,  0.00247082,  0.56898193]] 
+# #[[0.081636071205139, -0.0014979455154389, 0.0001306252379436], [-0.0014979455154389, 0.079125791788101, 0.00023489372688346], [0.0001306252379436, 0.00023489372688346, 0.027483496814966]]#[[ 0.17043061, -0.00068599, -0.00071081], [-0.00068599,  0.47382295,  0.00247082], [-0.00071081,  0.00247082,  0.56898193]] #NOTE:conferir se não muda  
+# mass : 26.42 #massa                                                     
+#-----------------------------------------------------------------
+
+
+#-----------------------------------------------------------------
+#Para Pioneer:                                                   
+#-----------------------------------------------------------------
+model: "PIONEER"
+m : 4 #numero de pontos de contato                                
+dx : 0.268 #distancia entre p1 e p2    #0.268 ref https://www.generationrobots.com/media/Pioneer3AT-P3AT-RevA-datasheet.pdf                          
+dy : 0.39 #distancia entre p2 e p3                              
+dy_m : 0 #nao utilizado nesse caso                               
+dz : 0.18 #altura do centro de massa                            
+fg : [0, 0, -258.916]#
+I_m : [[0.147116667, 0.0, 0.0],[0.0, 0.334951167, 0.0],[0.0, 0.0, 0.3978345] ]                                          
+mass : 24.6 #massa (kg)                                        
+#-----------------------------------------------------------------
+
+#-----------------------------------------------------------------
+#Para Husky:                                                   
+#-----------------------------------------------------------------
+# model: "HUSKY"
+# m : 4 #numero de pontos de contato                          
+# dx : 0.512 #distancia entre p1 e p2                              
+# dy : 0.571 #distancia entre p2 e p3                                   
+# dy_m : 0 #nao utilizado nesse caso                               
+# dz : 0.19 #altura do centro de massa (dado pelo CoppeliaSim)                       
+# fg : [0, 0, -490] #Vetor gravidade
+# I_m :  [[0.6022, -0.02364, -0.1197],[-0.02364, 1.7386, -0.001544], [-0.1197, -0.001544, 2.0296]]
+# mass : 50 #massa (kg)                                        
+#-----------------------------------------------------------------                                     
+#-----------------------------------------------------------------

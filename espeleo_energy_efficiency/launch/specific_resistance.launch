@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<launch>
+
+
+	<rosparam file="$(find espeleo_energy_efficiency)/config/espeleo_specs.yaml" />
+	<node pkg = "espeleo_energy_efficiency" name = "espeleo_specific_resistance" type = "specific_resistance.py" args="" output="screen"></node>
+
+</launch>

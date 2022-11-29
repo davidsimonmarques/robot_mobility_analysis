@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+
+<launch>
+<!--
+espeleo_pose_ekf
+
+<include file="$(find espeleo_pose_ekf)/launch/espeleo_pose_ekf.launch" />
+-->
+
+
+
+<!--
+From Pose to vel/accel data
+-->
+<node pkg = "vel_accel_from_pose" name = "vel_accel_from_pose" type = "vel_accel_from_pose.py" args="" output="screen"></node>
+
+
+
+
+<!--
+Stability Angle
+-->
+<rosparam file="$(find espeleo_stability_angle)/config/espeleo_dimensions.yaml" />
+<node pkg = "espeleo_stability_angle" name = "espeleo_dynamics" type = "dynamics.py" args="" output="screen"></node>
+<node pkg = "espeleo_stability_angle" name = "stability_angle_dynamic" type = "stability_plot_dynamic.py" args="" output="screen"></node>
+
+
+
+
+<!--
+specific resistance
+-->
+<include file="$(find espeleo_energy_efficiency)/launch/specific_resistance.launch" />
+
+
+
+<!--
+Gravar bag:
+
+ <node pkg="rosbag" type="record" name="rosbag_record_diag" args="record -a  -O /media/davidsimon/HD/DAVID/Resultados_linha_reta/LinhaReta" output="screen"/>   
+-->
+
+
+<!--
+Publish cmd_vel msg
+-->
+<node pkg = "rostopic" name = "rostopic_node" type = "rostopic" args="pub /cmd_vel geometry_msgs/Twist 
+{'linear':[-1.0,0,0],'angular':[0,0,0]} -r 20" output="screen"></node> <!-- 0.5 para ang tombamento-->
+
+</launch>

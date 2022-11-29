@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<launch>
+
+
+<rosparam file="$(find espeleo_stability_angle)/config/espeleo_dimensions.yaml" />
+<node pkg = "espeleo_stability_angle" name = "espeleo_dynamics" type = "dynamics.py" args="" output="screen"></node>
+<node pkg = "espeleo_stability_angle" name = "stability_angle_dynamic" type = "stability_plot_dynamic.py" args="" output="screen"></node>
+
+
+</launch>

@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+<launch>
+<!--
+espeleo_pose_ekf
+
+<include file="$(find espeleo_pose_ekf)/launch/espeleo_pose_ekf.launch" />
+-->
+
+
+
+<!--
+espeleo_control
+-->
+<include file="$(find espeleo_control)/launch/vector_field.launch" />
+
+
+
+<!--
+From Pose to vel/accel data
+-->
+<node pkg = "vel_accel_from_pose" name = "vel_accel_from_pose" type = "vel_accel_from_pose.py" args="" output="screen"></node>
+
+
+
+
+<!--
+Stability Angle
+-->
+<rosparam file="$(find espeleo_stability_angle)/config/espeleo_dimensions.yaml" />
+<node pkg = "espeleo_stability_angle" name = "espeleo_dynamics" type = "dynamics.py" args="" output="screen"></node>
+<node pkg = "espeleo_stability_angle" name = "stability_angle_dynamic" type = "stability_plot_dynamic.py" args="" output="screen"></node>
+
+
+
+<!--
+specific resistance
+-->
+<include file="$(find espeleo_energy_efficiency)/launch/specific_resistance.launch" />
+
+
+
+<!--
+Gravar bag:
+
+ <node pkg="rosbag" type="record" name="rosbag_record_diag" args="record -a  -O /media/davidsimon/HD/DAVID/Resultados_05_10/campinho" output="screen"/>   
+
+-->
+
+<!--
+espeleo_planning
+-->
+<include file="$(find espeleo_planning)/launch/my_launch.launch" />
+
+</launch>
